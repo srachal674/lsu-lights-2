@@ -23,7 +23,7 @@ basic.forever(function () {
     for (let index = 0; index <= 30; index++) {
         strip.setBrightness(255)
         strip.shift(1)
-        strip.range(0, 6).showColor(neopixel.rgb(70, 29, 124))
+        strip.range(1, 6).showColor(neopixel.rgb(70, 29, 124))
         basic.pause(1000)
         strip.shift(1)
         strip.range(7, 6).showColor(neopixel.rgb(255, 208, 35))
@@ -35,6 +35,6 @@ basic.forever(function () {
         strip.range(19, 6).showColor(neopixel.rgb(255, 208, 35))
         basic.pause(1000)
         strip.shift(1)
-        strip.range(25, 6).showColor(neopixel.rgb(70, 29, 124))
+        strip.range(24, 6).showColor(neopixel.rgb(70, 29, 124))
     }
 })
