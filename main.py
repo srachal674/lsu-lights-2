@@ -1,39 +1,32 @@
-def purple():
-    global range2
-    range2 = strip.range(1, 6)
-    strip.show_color(neopixel.rgb(70, 29, 124))
-
-def on_button_pressed_a():
-    global music_on
-    music_on = False
-input.on_button_pressed(Button.A, on_button_pressed_a)
-
-def gold():
-    global range2
-    range2 = strip.range(7, 12)
-    strip.show_color(neopixel.rgb(255, 208, 35))
-range2: neopixel.Strip = None
-music_on = False
-strip: neopixel.Strip = None
-music.set_volume(255)
-strip = neopixel.create(DigitalPin.P0, 30, NeoPixelMode.RGB)
-music_on = True
-
-def on_forever():
-    purple()
-    gold()
-basic.forever(on_forever)
-
-def on_forever2():
-    if music_on:
-        music.set_tempo(132)
-        music.play_tone(262, music.beat(BeatFraction.DOUBLE))
-        music.rest(music.beat(BeatFraction.QUARTER))
-        music.play_tone(262, music.beat(BeatFraction.WHOLE))
-        music.rest(music.beat(BeatFraction.QUARTER))
-        music.play_tone(262, music.beat(BeatFraction.DOUBLE))
-        music.play_tone(349, music.beat(BeatFraction.WHOLE))
-        music.rest(music.beat(BeatFraction.BREVE))
-    else:
-        music.stop_all_sounds()
-basic.forever(on_forever2)
+input.onButtonPressed(Button.A, function () {
+    music_on = false
+})
+let music_on = false
+music.setVolume(255)
+music_on = true
+let strip: number = neopixel.create(DigitalPin.P0, 30, NeoPixelMode.RGB)
+basic.forever(function () {
+    if (music_on) {
+        music.setTempo(132)
+        music.playTone(262, music.beat(BeatFraction.Double))
+        music.rest(music.beat(BeatFraction.Quarter))
+        music.playTone(262, music.beat(BeatFraction.Whole))
+        music.rest(music.beat(BeatFraction.Quarter))
+        music.playTone(262, music.beat(BeatFraction.Double))
+        music.playTone(349, music.beat(BeatFraction.Whole))
+        music.rest(music.beat(BeatFraction.Breve))
+    } else {
+        music.stopAllSounds()
+    }
+})
+basic.forever(function () {
+    strip = 0
+    strip.setBrightness(255)
+    strip.range(0, 6).showColor(neopixel.rgb(70, 29, 124))
+    basic.pause(1000)
+    strip.range(7, 6).showColor(neopixel.rgb(255, 208, 35))
+    basic.pause(1000)
+    strip.range(13, 6).showColor(neopixel.rgb(70, 29, 124))
+    basic.pause(1000)
+    strip.range(19, 6).showColor(neopixel.rgb(255, 208, 35))
+})
