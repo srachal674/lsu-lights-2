@@ -1,9 +1,9 @@
 input.onButtonPressed(Button.A, function () {
     music_on = false
 })
+let strip: neopixel.Strip = null
 let music_on = false
 music.setVolume(255)
-let strip = neopixel.create(DigitalPin.P0, 30, NeoPixelMode.RGB)
 music_on = true
 basic.forever(function () {
     if (music_on) {
@@ -20,9 +20,12 @@ basic.forever(function () {
     }
 })
 basic.forever(function () {
-    strip.setBrightness(255)
-    strip.showColor(neopixel.rgb(70, 29, 124))
+    strip = neopixel.create(DigitalPin.P0, 30, NeoPixelMode.RGB)
+    strip.range(0, 6).showColor(neopixel.rgb(70, 29, 124))
     basic.pause(1000)
-    strip.showColor(neopixel.rgb(255, 208, 35))
+    strip.range(7, 12).showColor(neopixel.rgb(255, 208, 35))
     basic.pause(1000)
+    strip.range(13, 18).showColor(neopixel.rgb(70, 29, 124))
+    basic.pause(1000)
+    strip.range(19, 24).showColor(neopixel.rgb(255, 208, 35))
 })
