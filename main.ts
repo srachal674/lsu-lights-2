@@ -6,12 +6,6 @@ music.setVolume(255)
 let strip = neopixel.create(DigitalPin.P0, 30, NeoPixelMode.RGB)
 music_on = true
 basic.forever(function () {
-    strip.showColor(neopixel.rgb(70, 29, 124))
-    basic.pause(2000)
-    strip.showColor(neopixel.rgb(255, 208, 35))
-    basic.pause(2000)
-})
-basic.forever(function () {
     if (music_on) {
         music.setTempo(132)
         music.playTone(262, music.beat(BeatFraction.Double))
@@ -24,4 +18,11 @@ basic.forever(function () {
     } else {
         music.stopAllSounds()
     }
+})
+basic.forever(function () {
+    strip.setBrightness(255)
+    strip.showColor(neopixel.rgb(70, 29, 124))
+    basic.pause(1000)
+    strip.showColor(neopixel.rgb(255, 208, 35))
+    basic.pause(1000)
 })
